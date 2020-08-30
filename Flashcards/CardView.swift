@@ -8,11 +8,6 @@
 
 import SwiftUI
 
-struct Card {
-    let word: String
-    let definition: String
-}
-
 struct CardView: View {
     let card: Card
     @State var showsFront = true

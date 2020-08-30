@@ -8,39 +8,38 @@
 
 import SwiftUI
 
+struct CardSet {
+    let title: String
+    let cards: [Card]
+}
+
+struct Card {
+    let word: String
+    let definition: String
+}
+
 struct ContentView: View {
+    @ObservedObject var cardSetsData = CardSetsData()
     @State var currentPage = 0
-    @State var cards = [
-        CardView(
-            card: Card(
-                word: "Word 1",
-                definition: "Definition 1"
-            )
-        ),
-        CardView(
-            card: Card(
-                word: "Word 2",
-                definition: "Definition 2"
-            )
-        ),
-        CardView(
-            card: Card(
-                word: "Word 3",
-                definition: "Definition 3"
-            )
-        )
-    ]
     
     var body: some View {
         NavigationView {
-            PageView(cards, currentPage: $currentPage)
+            
+            
+            
+            
+            
+            PageView(
+                cardSetsData.cardSets.first!.cards.map { card in return CardView(card: card)},
+                currentPage: $currentPage
+            )
                 .navigationBarTitle(
                     "Flashcards",
                     displayMode: .inline
                 )
                 .edgesIgnoringSafeArea(.bottom)
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }
 
