@@ -34,11 +34,12 @@ struct PageView<Page: View>: View {
                 )
             })
         }
-        return AnyView(VStack {
-            Spacer()
-            Text("Error: Results Not Fetched")
-            Spacer()
-        })
+        return AnyView(
+            Text("No Cards")
+                .foregroundColor(Color(UIColor.secondaryLabel))
+                .navigationBarTitle("Flashcards", displayMode: .inline)
+                .font(Font.headline)
+        )
     }
 }
 

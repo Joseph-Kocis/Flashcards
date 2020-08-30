@@ -19,6 +19,9 @@
 		A6B6C3CA24FC081500F2E6B1 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3C924FC081500F2E6B1 /* CardView.swift */; };
 		A6B6C3CC24FC086B00F2E6B1 /* CardDataViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3CB24FC086B00F2E6B1 /* CardDataViews.swift */; };
 		A6B6C3CE24FC102F00F2E6B1 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3CD24FC102F00F2E6B1 /* Data.swift */; };
+		A6B6C3D124FC12E300F2E6B1 /* CardSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3D024FC12E300F2E6B1 /* CardSetsView.swift */; };
+		A6B6C3D524FC158F00F2E6B1 /* CardsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3D424FC158F00F2E6B1 /* CardsPageView.swift */; };
+		A6B6C3D824FC3C9000F2E6B1 /* CreateCardSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3D724FC3C9000F2E6B1 /* CreateCardSetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,10 @@
 		A6B6C3C924FC081500F2E6B1 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		A6B6C3CB24FC086B00F2E6B1 /* CardDataViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDataViews.swift; sourceTree = "<group>"; };
 		A6B6C3CD24FC102F00F2E6B1 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		A6B6C3D024FC12E300F2E6B1 /* CardSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetsView.swift; sourceTree = "<group>"; };
+		A6B6C3D424FC158F00F2E6B1 /* CardsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPageView.swift; sourceTree = "<group>"; };
+		A6B6C3D624FC3A3900F2E6B1 /* Flashcards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flashcards.entitlements; sourceTree = "<group>"; };
+		A6B6C3D724FC3C9000F2E6B1 /* CreateCardSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardSetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,11 +75,12 @@
 		A647183124F981160057C19F /* Flashcards */ = {
 			isa = PBXGroup;
 			children = (
+				A6B6C3D624FC3A3900F2E6B1 /* Flashcards.entitlements */,
 				A647183224F981160057C19F /* AppDelegate.swift */,
 				A647183424F981160057C19F /* SceneDelegate.swift */,
 				A647183924F981160057C19F /* ContentView.swift */,
-				A6B6C3C924FC081500F2E6B1 /* CardView.swift */,
-				A6B6C3CB24FC086B00F2E6B1 /* CardDataViews.swift */,
+				A6B6C3D924FC415000F2E6B1 /* Card Sets */,
+				A6B6C3CF24FC12CA00F2E6B1 /* Cards */,
 				A6B6C3CD24FC102F00F2E6B1 /* Data.swift */,
 				A647184924F991930057C19F /* Pages */,
 				A647183B24F981270057C19F /* Assets.xcassets */,
@@ -99,6 +107,25 @@
 				A647184C24F991BE0057C19F /* PageViewController.swift */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		A6B6C3CF24FC12CA00F2E6B1 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				A6B6C3C924FC081500F2E6B1 /* CardView.swift */,
+				A6B6C3CB24FC086B00F2E6B1 /* CardDataViews.swift */,
+				A6B6C3D424FC158F00F2E6B1 /* CardsPageView.swift */,
+			);
+			path = Cards;
+			sourceTree = "<group>";
+		};
+		A6B6C3D924FC415000F2E6B1 /* Card Sets */ = {
+			isa = PBXGroup;
+			children = (
+				A6B6C3D024FC12E300F2E6B1 /* CardSetsView.swift */,
+				A6B6C3D724FC3C9000F2E6B1 /* CreateCardSetView.swift */,
+			);
+			path = "Card Sets";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,10 +202,13 @@
 				A6B6C3CC24FC086B00F2E6B1 /* CardDataViews.swift in Sources */,
 				A6B6C3CA24FC081500F2E6B1 /* CardView.swift in Sources */,
 				A647184B24F991A20057C19F /* PageView.swift in Sources */,
+				A6B6C3D524FC158F00F2E6B1 /* CardsPageView.swift in Sources */,
 				A647183324F981160057C19F /* AppDelegate.swift in Sources */,
 				A647183824F981160057C19F /* Flashcards.xcdatamodeld in Sources */,
 				A647184D24F991BE0057C19F /* PageViewController.swift in Sources */,
+				A6B6C3D824FC3C9000F2E6B1 /* CreateCardSetView.swift in Sources */,
 				A647183A24F981160057C19F /* ContentView.swift in Sources */,
+				A6B6C3D124FC12E300F2E6B1 /* CardSetsView.swift in Sources */,
 				A6B6C3CE24FC102F00F2E6B1 /* Data.swift in Sources */,
 				A647183524F981160057C19F /* SceneDelegate.swift in Sources */,
 			);
@@ -316,6 +346,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Flashcards/Flashcards.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Flashcards/Preview Content\"";
 				DEVELOPMENT_TEAM = 373ZY3MVGD;
@@ -327,6 +358,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JodyKocis.Flashcards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -336,6 +368,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Flashcards/Flashcards.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Flashcards/Preview Content\"";
 				DEVELOPMENT_TEAM = 373ZY3MVGD;
@@ -347,6 +380,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = JodyKocis.Flashcards;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

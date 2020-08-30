@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct CardSet {
+    public var id = UUID()
     let title: String
     let cards: [Card]
 }
@@ -20,24 +21,15 @@ struct Card {
 
 struct ContentView: View {
     @ObservedObject var cardSetsData = CardSetsData()
-    @State var currentPage = 0
     
     var body: some View {
         NavigationView {
+            CardSetsView(cardSetsData: cardSetsData)
             
-            
-            
-            
-            
-            PageView(
-                cardSetsData.cardSets.first!.cards.map { card in return CardView(card: card)},
-                currentPage: $currentPage
-            )
-                .navigationBarTitle(
-                    "Flashcards",
-                    displayMode: .inline
-                )
-                .edgesIgnoringSafeArea(.bottom)
+            Text("No Card Set Selected")
+                .foregroundColor(Color(UIColor.secondaryLabel))
+                .navigationBarTitle("Flashcards", displayMode: .inline)
+                .font(Font.headline)
         }
         .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
@@ -46,7 +38,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environment(\.colorScheme, .light
-        )
+            .environment(\.colorScheme, .light)
     }
 }

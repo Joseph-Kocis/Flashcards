@@ -8,10 +8,12 @@
 
 import SwiftUI
 
-class CardSetsData: ObservableObject {
+public class CardSetsData: ObservableObject {
     @Published var cardSets = [CardSet]()
     
     init() {
+        addTestCardSet()
+        addTestCardSet()
         addTestCardSet()
     }
     
@@ -20,24 +22,26 @@ class CardSetsData: ObservableObject {
     }
     
     private func addTestCardSet() {
-        let testCards = [
-            Card(
-                word: "Word 1",
-                definition: "Definition 1"
-            ),
-            Card(
-                word: "Word 2",
-                definition: "Definition 2"
-            ),
-            Card(
-                word: "Word 3",
-                definition: "Definition 3"
-            )
-        ]
-        cardSets.append(
-            CardSet(title: "Test Set", cards: testCards)
-        )
+        cardSets.append(CardSetsData.testCardSet())
     }
     
-    
+    static func testCardSet() -> CardSet {
+        return CardSet(
+            title: "Test Set",
+            cards: [
+                Card(
+                    word: "Word 1",
+                    definition: "Definition 1"
+                ),
+                Card(
+                    word: "Word 2",
+                    definition: "Definition 2"
+                ),
+                Card(
+                    word: "Word 3",
+                    definition: "Definition 3"
+                )
+            ]
+        )
+    }
 }
