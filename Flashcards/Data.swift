@@ -8,6 +8,17 @@
 
 import SwiftUI
 
+struct CardSet {
+    public var id = UUID()
+    let title: String
+    let cards: [Card]
+}
+
+struct Card {
+    let word: String
+    let definition: String
+}
+
 public class CardSetsData: ObservableObject {
     @Published var cardSets = [CardSet]()
     

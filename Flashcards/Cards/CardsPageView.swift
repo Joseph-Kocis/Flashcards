@@ -9,16 +9,22 @@
 import SwiftUI
 
 struct CardsPageView: View {
-    let cards: [Card]
+    let cardSet: CardSet
     @State var currentPage = 0
     
     var body: some View {
         PageView(
-            cards.map { card in return CardView(card: card)},
-            currentPage: self.$currentPage
+            cardSet.cards.map { card in return CardView(card: card)},
+            currentPage: self.$currentPage,
+            failView: AnyView(
+                Text("No Cards")
+                    .foregroundColor(Color(UIColor.secondaryLabel))
+                    .navigationBarTitle("\(cardSet.title)", displayMode: .inline)
+                    .font(Font.headline)
+            )
         )
             .navigationBarTitle(
-                "Flashcards",
+                "\(cardSet.title)",
                 displayMode: .inline
             )
             .edgesIgnoringSafeArea(.bottom)

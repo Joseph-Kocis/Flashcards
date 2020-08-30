@@ -32,6 +32,7 @@ struct CreateCardSetView: View {
                 }
                 .padding()
             }
+            .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("New Card Set", displayMode: .inline)
             .navigationBarItems(
                 leading: Button(
@@ -61,7 +62,6 @@ struct CreateCardSetView: View {
 
 struct CreateCardSetView_Previews: PreviewProvider {
     @State static var testCardSet: CardSet? = CardSetsData.testCardSet()
-    
     static var previews: some View {
         CreateCardSetView(newCardSet: $testCardSet)
             .environment(\.colorScheme, .light)

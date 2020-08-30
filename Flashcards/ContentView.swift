@@ -8,17 +8,6 @@
 
 import SwiftUI
 
-struct CardSet {
-    public var id = UUID()
-    let title: String
-    let cards: [Card]
-}
-
-struct Card {
-    let word: String
-    let definition: String
-}
-
 struct ContentView: View {
     @ObservedObject var cardSetsData = CardSetsData()
     
@@ -28,7 +17,6 @@ struct ContentView: View {
             
             Text("No Card Set Selected")
                 .foregroundColor(Color(UIColor.secondaryLabel))
-                .navigationBarTitle("Flashcards", displayMode: .inline)
                 .font(Font.headline)
         }
         .navigationViewStyle(DoubleColumnNavigationViewStyle())

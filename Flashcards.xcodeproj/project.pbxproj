@@ -112,9 +112,9 @@
 		A6B6C3CF24FC12CA00F2E6B1 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				A6B6C3D424FC158F00F2E6B1 /* CardsPageView.swift */,
 				A6B6C3C924FC081500F2E6B1 /* CardView.swift */,
 				A6B6C3CB24FC086B00F2E6B1 /* CardDataViews.swift */,
-				A6B6C3D424FC158F00F2E6B1 /* CardsPageView.swift */,
 			);
 			path = Cards;
 			sourceTree = "<group>";

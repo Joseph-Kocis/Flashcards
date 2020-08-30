@@ -21,7 +21,7 @@ public struct CardSetsView: View {
     public var body: some View {
         List {
             ForEach(cardSetsData.cardSets, id: \.id) { cardSet in
-                NavigationLink(destination: CardsPageView(cards: cardSet.cards)) {
+                NavigationLink(destination: CardsPageView(cardSet: cardSet)) {
                     Text(cardSet.title)
                 }
             }
