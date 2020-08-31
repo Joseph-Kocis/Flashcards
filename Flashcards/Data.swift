@@ -16,8 +16,8 @@ struct CardSet {
 
 struct Card: Identifiable {
     public var id = UUID()
-    @State var word: String
-    @State var definition: String
+    var word: String
+    var definition: String
 }
 
 public class CardSetsData: ObservableObject {

@@ -14,7 +14,7 @@ struct CreateCardSetView: View {
     
     @State private var newCardSetTitle = ""
     
-    @State private var newCards = [Card]()
+    @ObservedObject private var newCards = CardsInformation()
     
     public init(newCardSet: Binding<CardSet?>) {
         self._newCardSet = newCardSet
@@ -30,7 +30,7 @@ struct CreateCardSetView: View {
                         TextField("Enter title", text: $newCardSetTitle)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
-                    AddCardsView(newCards: $newCards)
+                    AddCardsView(cards: newCards)
                     Spacer()
                 }
                 .padding()
@@ -51,7 +51,7 @@ struct CreateCardSetView: View {
                         if !self.newCardSetTitle.isEmpty {
                             self.newCardSet = CardSet(
                                 title: self.newCardSetTitle,
-                                cards: self.newCards
+                                cards: self.newCards.getCards()
                             )
                         }
                         self.presentationMode.wrappedValue.dismiss()
