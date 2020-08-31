@@ -14,6 +14,8 @@ struct CreateCardSetView: View {
     
     @State private var newCardSetTitle = ""
     
+    @State private var newCards = [Card]()
+    
     public init(newCardSet: Binding<CardSet?>) {
         self._newCardSet = newCardSet
     }
@@ -28,6 +30,7 @@ struct CreateCardSetView: View {
                         TextField("Enter title", text: $newCardSetTitle)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
+                    AddCardsView(newCards: $newCards)
                     Spacer()
                 }
                 .padding()
@@ -46,12 +49,15 @@ struct CreateCardSetView: View {
                 trailing: Button(
                     action: {
                         if !self.newCardSetTitle.isEmpty {
-                            self.newCardSet = CardSet(title: self.newCardSetTitle, cards: [])
+                            self.newCardSet = CardSet(
+                                title: self.newCardSetTitle,
+                                cards: self.newCards
+                            )
                         }
                         self.presentationMode.wrappedValue.dismiss()
                     },
                     label: {
-                        Text("Add Item")
+                        Text("Add Set")
                     }
                 )
             )

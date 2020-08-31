@@ -26,7 +26,7 @@ public struct CardSetsView: View {
                 }
             }
         }
-        .navigationBarTitle("Card Sets")
+        .navigationBarTitle("Card Sets", displayMode: .inline)
         .navigationBarItems(
             trailing: Button(
                 action: {

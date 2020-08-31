@@ -14,9 +14,10 @@ struct CardSet {
     let cards: [Card]
 }
 
-struct Card {
-    let word: String
-    let definition: String
+struct Card: Identifiable {
+    public var id = UUID()
+    @State var word: String
+    @State var definition: String
 }
 
 public class CardSetsData: ObservableObject {
