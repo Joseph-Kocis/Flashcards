@@ -26,24 +26,28 @@ struct AddCardsView: View {
     
     public var body: some View {
         VStack {
-            ForEach(cards.words.indices, id: \.self) { index in
-                VStack {
-                    HStack {
-                        Text("Word")
-                        TextField("Enter word", text: self.$cards.words[index])
+            List {
+                ForEach(cards.words.indices, id: \.self) { index in
+                    VStack {
+                        VStack(alignment: .leading) {
+                            Text("Word")
+                                .font(.subheadline)
+                            TextField("Enter word", text: self.$cards.words[index])
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                    }
-                    HStack {
-                        Text("Definition")
-                        TextField("Enter definition", text: self.$cards.definitions[index])
+                        }
+                        VStack(alignment: .leading) {
+                            Text("Definition")
+                                .font(.subheadline)
+                            TextField("Enter definition", text: self.$cards.definitions[index])
                             .textFieldStyle(RoundedBorderTextFieldStyle())
+                        }
                     }
                 }
             }
             Button(
                 action: {
-                    self.cards.words.append("Word")
-                    self.cards.definitions.append("Definition")
+                    self.cards.words.append("")
+                    self.cards.definitions.append("")
                 },
                 label: {
                     Image(systemName: "plus.circle")

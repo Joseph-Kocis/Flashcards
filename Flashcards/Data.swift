@@ -24,9 +24,7 @@ public class CardSetsData: ObservableObject {
     @Published var cardSets = [CardSet]()
     
     init() {
-        addTestCardSet()
-        addTestCardSet()
-        addTestCardSet()
+        
     }
     
     func addCardSet(_ cardSet: CardSet) {

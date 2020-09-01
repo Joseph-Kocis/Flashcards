@@ -10,11 +10,12 @@ import SwiftUI
 
 struct CreateCardSetView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @Binding public var newCardSet: CardSet?
-    
     @State private var newCardSetTitle = ""
-    
     @ObservedObject private var newCards = CardsInformation()
+    
+    @State private var showingAlert = false
     
     public init(newCardSet: Binding<CardSet?>) {
         self._newCardSet = newCardSet
@@ -53,14 +54,23 @@ struct CreateCardSetView: View {
                                 title: self.newCardSetTitle,
                                 cards: self.newCards.getCards()
                             )
+                            self.presentationMode.wrappedValue.dismiss()
+                        } else {
+                            self.showingAlert = true
                         }
-                        self.presentationMode.wrappedValue.dismiss()
                     },
                     label: {
                         Text("Add Set")
                     }
                 )
             )
+            .alert(isPresented: self.$showingAlert) {
+                Alert(
+                    title: Text("Cannot Add Set"),
+                    message: Text("This set needs a title before it can be added"),
+                    dismissButton: .default(Text("OK"))
+                )
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
