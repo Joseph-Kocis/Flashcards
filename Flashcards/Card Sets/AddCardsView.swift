@@ -22,27 +22,28 @@ class CardsInformation: ObservableObject {
 }
 
 struct AddCardsView: View {
+    @Environment(\.colorScheme) var colorScheme
+    
     @ObservedObject var cards: CardsInformation
     
     public var body: some View {
         VStack {
-            List {
-                ForEach(cards.words.indices, id: \.self) { index in
-                    VStack {
-                        VStack(alignment: .leading) {
-                            Text("Word")
-                                .font(.subheadline)
-                            TextField("Enter word", text: self.$cards.words[index])
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                        }
-                        VStack(alignment: .leading) {
-                            Text("Definition")
-                                .font(.subheadline)
-                            TextField("Enter definition", text: self.$cards.definitions[index])
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                        }
+            ForEach(cards.words.indices, id: \.self) { index in
+                /*VStack {
+                    VStack(alignment: .leading) {
+                        Text("Word")
+                            .font(.subheadline)
+                        TextField("Enter word", text: self.$cards.words[index])
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
                     }
-                }
+                    VStack(alignment: .leading) {
+                        Text("Definition")
+                            .font(.subheadline)
+                        TextField("Enter definition", text: self.$cards.definitions[index])
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    }
+                }*/
+                FullCardView()
             }
             Button(
                 action: {

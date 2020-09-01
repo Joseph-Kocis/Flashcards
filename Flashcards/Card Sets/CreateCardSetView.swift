@@ -25,16 +25,18 @@ struct CreateCardSetView: View {
         NavigationView {
             ZStack {
                 Color(UIColor.secondarySystemBackground)
-                VStack {
-                    HStack {
-                        Text("Title")
-                        TextField("Enter title", text: $newCardSetTitle)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                ScrollView {
+                    VStack {
+                        HStack {
+                            Text("Title")
+                            TextField("Enter title", text: $newCardSetTitle)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                        }
+                        AddCardsView(cards: newCards)
+                        Spacer()
                     }
-                    AddCardsView(cards: newCards)
-                    Spacer()
+                    .padding()
                 }
-                .padding()
             }
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("New Card Set", displayMode: .inline)
