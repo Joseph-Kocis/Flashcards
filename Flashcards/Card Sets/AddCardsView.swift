@@ -29,21 +29,7 @@ struct AddCardsView: View {
     public var body: some View {
         VStack {
             ForEach(cards.words.indices, id: \.self) { index in
-                /*VStack {
-                    VStack(alignment: .leading) {
-                        Text("Word")
-                            .font(.subheadline)
-                        TextField("Enter word", text: self.$cards.words[index])
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    }
-                    VStack(alignment: .leading) {
-                        Text("Definition")
-                            .font(.subheadline)
-                        TextField("Enter definition", text: self.$cards.definitions[index])
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    }
-                }*/
-                FullCardView()
+                FullCardView(cards: self.cards, index: index)
             }
             Button(
                 action: {

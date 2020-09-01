@@ -11,6 +11,9 @@ import SwiftUI
 struct FullCardView: View {
     @Environment(\.colorScheme) var colorScheme
     
+    @ObservedObject var cards: CardsInformation
+    let index: Int
+    
     public var body: some View {
         ZStack {
             Rectangle()
@@ -20,20 +23,22 @@ struct FullCardView: View {
                 .frame(minHeight: 125, maxHeight: .infinity)
                 .cornerRadius(10)
                 .shadow(color: self.colorScheme == .light ? .gray : .black, radius: 2)
-                .padding(.vertical, 10)
             
             HStack {
-                Text("Word sdfads")
-                    .frame(minWidth: 0, maxWidth: .infinity)
-                Text("Definition sdfadfasdfasd")
-                    .frame(minWidth: 0, maxWidth: .infinity)
+                TextField("Enter word", text: self.$cards.words[index])
+                    .padding(.horizontal, 10)
+                    .multilineTextAlignment(.center)
+                TextField("Enter definition", text: self.$cards.definitions[index])
+                    .padding(.horizontal, 10)
+                    .multilineTextAlignment(.center)
             }
             
             HStack {
                 Divider()
-                    .padding(.vertical, 10)
+                    
             }
         }
+        .padding(.vertical, 10)
     }
 }
 

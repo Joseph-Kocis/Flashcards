@@ -23,9 +23,7 @@ struct Card: Identifiable {
 public class CardSetsData: ObservableObject {
     @Published var cardSets = [CardSet]()
     
-    init() {
-        
-    }
+    init() { }
     
     func addCardSet(_ cardSet: CardSet) {
         cardSets.append(cardSet)

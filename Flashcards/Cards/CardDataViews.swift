@@ -22,11 +22,11 @@ struct CardFrontView: View {
                 )
                 .cornerRadius(10)
                 .shadow(color: colorScheme == .light ? .gray : .black, radius: 5)
-                .padding(.horizontal, horizontalSizeClass == .compact ? 15 : 50)
-                .padding(.vertical, 50)
             Text(card.word)
                 .foregroundColor(Color(UIColor.label))
         }
+        .padding(.horizontal, horizontalSizeClass == .compact ? 15 : 50)
+        .padding(.vertical, 50)
     }
 }
 
@@ -44,8 +44,6 @@ struct CardBackView: View {
                 )
                 .cornerRadius(10)
                 .shadow(color: colorScheme == .light ? .gray : .black, radius: 5)
-                .padding(.horizontal, horizontalSizeClass == .compact ? 15 : 50)
-                .padding(.vertical, 50)
             VStack {
                 Text(card.word)
                     .padding(.bottom, 15)
@@ -53,6 +51,8 @@ struct CardBackView: View {
                     .foregroundColor(Color(UIColor.secondaryLabel))
             }
         }
+        .padding(.horizontal, horizontalSizeClass == .compact ? 15 : 50)
+        .padding(.vertical, 50)
     }
 }
 
