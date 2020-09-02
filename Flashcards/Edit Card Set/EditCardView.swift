@@ -1,5 +1,5 @@
 //
-//  FullCardView.swift
+//  EditCardView.swift
 //  Flashcards
 //
 //  Created by Jody Kocis on 9/1/20.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct FullCardView: View {
+struct EditCardView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @ObservedObject var cards: CardsInformation
@@ -42,10 +42,10 @@ struct FullCardView: View {
     }
 }
 
-struct FullCardView_Previews: PreviewProvider {
+struct EditCardView_Previews: PreviewProvider {
     @State static var testCardSet: CardSet? = CardSetsData.testCardSet()
     static var previews: some View {
-        CreateCardSetView(newCardSet: $testCardSet)
+        EditCardSetView(cardSet: $testCardSet, isNewCardSet: true)
             .environment(\.colorScheme, .light)
     }
 }

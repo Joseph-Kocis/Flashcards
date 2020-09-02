@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A61FB4B624FEFA46007229E5 /* FullCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61FB4B524FEFA46007229E5 /* FullCardView.swift */; };
+		A61FB4B624FEFA46007229E5 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A61FB4B524FEFA46007229E5 /* EditCardView.swift */; };
 		A647183324F981160057C19F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A647183224F981160057C19F /* AppDelegate.swift */; };
 		A647183524F981160057C19F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A647183424F981160057C19F /* SceneDelegate.swift */; };
 		A647183824F981160057C19F /* Flashcards.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A647183624F981160057C19F /* Flashcards.xcdatamodeld */; };
@@ -22,12 +22,12 @@
 		A6B6C3CE24FC102F00F2E6B1 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3CD24FC102F00F2E6B1 /* Data.swift */; };
 		A6B6C3D124FC12E300F2E6B1 /* CardSetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3D024FC12E300F2E6B1 /* CardSetsView.swift */; };
 		A6B6C3D524FC158F00F2E6B1 /* CardsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3D424FC158F00F2E6B1 /* CardsPageView.swift */; };
-		A6B6C3D824FC3C9000F2E6B1 /* CreateCardSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3D724FC3C9000F2E6B1 /* CreateCardSetView.swift */; };
-		A6B6C3DB24FC473000F2E6B1 /* AddCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3DA24FC473000F2E6B1 /* AddCardsView.swift */; };
+		A6B6C3D824FC3C9000F2E6B1 /* EditCardSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3D724FC3C9000F2E6B1 /* EditCardSetView.swift */; };
+		A6B6C3DB24FC473000F2E6B1 /* EditCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3DA24FC473000F2E6B1 /* EditCardsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A61FB4B524FEFA46007229E5 /* FullCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullCardView.swift; sourceTree = "<group>"; };
+		A61FB4B524FEFA46007229E5 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 		A647182F24F981160057C19F /* Flashcards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashcards.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A647183224F981160057C19F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A647183424F981160057C19F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,8 +45,8 @@
 		A6B6C3D024FC12E300F2E6B1 /* CardSetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSetsView.swift; sourceTree = "<group>"; };
 		A6B6C3D424FC158F00F2E6B1 /* CardsPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsPageView.swift; sourceTree = "<group>"; };
 		A6B6C3D624FC3A3900F2E6B1 /* Flashcards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flashcards.entitlements; sourceTree = "<group>"; };
-		A6B6C3D724FC3C9000F2E6B1 /* CreateCardSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCardSetView.swift; sourceTree = "<group>"; };
-		A6B6C3DA24FC473000F2E6B1 /* AddCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCardsView.swift; sourceTree = "<group>"; };
+		A6B6C3D724FC3C9000F2E6B1 /* EditCardSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardSetView.swift; sourceTree = "<group>"; };
+		A6B6C3DA24FC473000F2E6B1 /* EditCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +85,7 @@
 				A647183924F981160057C19F /* ContentView.swift */,
 				A6B6C3D924FC415000F2E6B1 /* Card Sets */,
 				A6B6C3CF24FC12CA00F2E6B1 /* Cards */,
+				A6B4F741250007460090C350 /* Edit Card Set */,
 				A6B6C3CD24FC102F00F2E6B1 /* Data.swift */,
 				A647184924F991930057C19F /* Pages */,
 				A647183B24F981270057C19F /* Assets.xcassets */,
@@ -113,6 +114,16 @@
 			path = Pages;
 			sourceTree = "<group>";
 		};
+		A6B4F741250007460090C350 /* Edit Card Set */ = {
+			isa = PBXGroup;
+			children = (
+				A6B6C3D724FC3C9000F2E6B1 /* EditCardSetView.swift */,
+				A6B6C3DA24FC473000F2E6B1 /* EditCardsView.swift */,
+				A61FB4B524FEFA46007229E5 /* EditCardView.swift */,
+			);
+			path = "Edit Card Set";
+			sourceTree = "<group>";
+		};
 		A6B6C3CF24FC12CA00F2E6B1 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,9 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				A6B6C3D024FC12E300F2E6B1 /* CardSetsView.swift */,
-				A6B6C3D724FC3C9000F2E6B1 /* CreateCardSetView.swift */,
-				A6B6C3DA24FC473000F2E6B1 /* AddCardsView.swift */,
-				A61FB4B524FEFA46007229E5 /* FullCardView.swift */,
 			);
 			path = "Card Sets";
 			sourceTree = "<group>";
@@ -210,11 +218,11 @@
 				A647184B24F991A20057C19F /* PageView.swift in Sources */,
 				A6B6C3D524FC158F00F2E6B1 /* CardsPageView.swift in Sources */,
 				A647183324F981160057C19F /* AppDelegate.swift in Sources */,
-				A61FB4B624FEFA46007229E5 /* FullCardView.swift in Sources */,
+				A61FB4B624FEFA46007229E5 /* EditCardView.swift in Sources */,
 				A647183824F981160057C19F /* Flashcards.xcdatamodeld in Sources */,
 				A647184D24F991BE0057C19F /* PageViewController.swift in Sources */,
-				A6B6C3DB24FC473000F2E6B1 /* AddCardsView.swift in Sources */,
-				A6B6C3D824FC3C9000F2E6B1 /* CreateCardSetView.swift in Sources */,
+				A6B6C3DB24FC473000F2E6B1 /* EditCardsView.swift in Sources */,
+				A6B6C3D824FC3C9000F2E6B1 /* EditCardSetView.swift in Sources */,
 				A647183A24F981160057C19F /* ContentView.swift in Sources */,
 				A6B6C3D124FC12E300F2E6B1 /* CardSetsView.swift in Sources */,
 				A6B6C3CE24FC102F00F2E6B1 /* Data.swift in Sources */,

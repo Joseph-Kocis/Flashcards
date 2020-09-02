@@ -21,7 +21,7 @@ public struct CardSetsView: View {
     public var body: some View {
         List {
             ForEach(cardSetsData.cardSets, id: \.id) { cardSet in
-                NavigationLink(destination: CardsPageView(cardSet: cardSet)) {
+                NavigationLink(destination: CardsPageView(cardSetsData: self.cardSetsData, cardSet: cardSet)) {
                     Text(cardSet.title)
                 }
             }
@@ -39,7 +39,7 @@ public struct CardSetsView: View {
                 }
             )
             .sheet(isPresented: $showingAddItemView) {
-                CreateCardSetView(newCardSet: self.$newCardSet)
+                EditCardSetView(cardSet: self.$newCardSet, isNewCardSet: true)
                     .onDisappear() {
                         if let newCardSet = self.newCardSet {
                             self.cardSetsData.addCardSet(newCardSet)

@@ -1,5 +1,5 @@
 //
-//  CreateCardSetView.swift
+//  EditCardSetView.swift
 //  Flashcards
 //
 //  Created by Jody Kocis on 8/30/20.
@@ -8,17 +8,24 @@
 
 import SwiftUI
 
-struct CreateCardSetView: View {
+struct EditCardSetView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
-    @Binding public var newCardSet: CardSet?
-    @State private var newCardSetTitle = ""
-    @ObservedObject private var newCards = CardsInformation()
+    @ObservedObject private var cardsInformation = CardsInformation()
     
+    @State private var cardSetTitle = ""
     @State private var showingAlert = false
     
-    public init(newCardSet: Binding<CardSet?>) {
-        self._newCardSet = newCardSet
+    @Binding var cardSet: CardSet?
+    
+    var isNewCardSet: Bool
+    
+    public init(cardSet: Binding<CardSet?>, isNewCardSet: Bool) {
+        self._cardSet = cardSet
+        self.isNewCardSet = isNewCardSet
+        if let cardSet = cardSet.wrappedValue {
+            self.cardsInformation = CardsInformation(from: cardSet)
+        }
     }
     
     public var body: some View {
@@ -29,17 +36,20 @@ struct CreateCardSetView: View {
                     VStack {
                         HStack {
                             Text("Title")
-                            TextField("Enter title", text: $newCardSetTitle)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                            TextField(
+                                "Enter title",
+                                text: $cardSetTitle
+                            )
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                         }
-                        AddCardsView(cards: newCards)
+                        EditCardsView(cards: cardsInformation)
                         Spacer()
                     }
                     .padding()
                 }
             }
             .edgesIgnoringSafeArea(.bottom)
-            .navigationBarTitle("New Card Set", displayMode: .inline)
+            .navigationBarTitle(isNewCardSet ? "New Card Set" : "Edit Card Set", displayMode: .inline)
             .navigationBarItems(
                 leading: Button(
                     action: {
@@ -51,10 +61,10 @@ struct CreateCardSetView: View {
                 ),
                 trailing: Button(
                     action: {
-                        if !self.newCardSetTitle.isEmpty {
-                            self.newCardSet = CardSet(
-                                title: self.newCardSetTitle,
-                                cards: self.newCards.getCards()
+                        if !self.cardSetTitle.isEmpty {
+                            self.cardSet = CardSet(
+                                title: self.cardSetTitle,
+                                cards: self.cardsInformation.getCards()
                             )
                             self.presentationMode.wrappedValue.dismiss()
                         } else {
@@ -62,7 +72,7 @@ struct CreateCardSetView: View {
                         }
                     },
                     label: {
-                        Text("Add Set")
+                        Text(isNewCardSet ? "Add Set" : "Done")
                     }
                 )
             )
@@ -74,14 +84,19 @@ struct CreateCardSetView: View {
                 )
             }
         }
+        .onAppear {
+            if let title = self.cardSet?.title {
+                self.cardSetTitle = title
+            }
+        }
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
-struct CreateCardSetView_Previews: PreviewProvider {
+struct EditCardSetView_Previews: PreviewProvider {
     @State static var testCardSet: CardSet? = CardSetsData.testCardSet()
     static var previews: some View {
-        CreateCardSetView(newCardSet: $testCardSet)
+        EditCardSetView(cardSet: $testCardSet, isNewCardSet: true)
             .environment(\.colorScheme, .light)
     }
 }

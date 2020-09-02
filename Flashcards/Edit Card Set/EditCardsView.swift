@@ -1,5 +1,5 @@
 //
-//  AddCardsView.swift
+//  EditCardsView.swift
 //  Flashcards
 //
 //  Created by Jody Kocis on 8/30/20.
@@ -9,8 +9,22 @@
 import SwiftUI
 
 class CardsInformation: ObservableObject {
-    @Published var words = [String]()
-    @Published var definitions = [String]()
+    @Published var words: [String]
+    @Published var definitions: [String]
+    
+    init() {
+        words = [String]()
+        definitions = [String]()
+    }
+    
+    init(from cardSet: CardSet) {
+        self.words = cardSet.cards.map { card in
+            return card.word
+        }
+        self.definitions = cardSet.cards.map { card in
+            return card.definition
+        }
+    }
     
     public func getCards() -> [Card] {
         var cards = [Card]()
@@ -21,7 +35,7 @@ class CardsInformation: ObservableObject {
     }
 }
 
-struct AddCardsView: View {
+struct EditCardsView: View {
     @Environment(\.colorScheme) var colorScheme
     
     @ObservedObject var cards: CardsInformation
@@ -29,7 +43,7 @@ struct AddCardsView: View {
     public var body: some View {
         VStack {
             ForEach(cards.words.indices, id: \.self) { index in
-                FullCardView(cards: self.cards, index: index)
+                EditCardView(cards: self.cards, index: index)
             }
             Button(
                 action: {
@@ -45,10 +59,10 @@ struct AddCardsView: View {
     }
 }
 
-struct AddCardsView_Previews: PreviewProvider {
+struct EditCardsView_Previews: PreviewProvider {
     @State static var testCardSet: CardSet? = CardSetsData.testCardSet()
     static var previews: some View {
-        CreateCardSetView(newCardSet: $testCardSet)
+        EditCardSetView(cardSet: $testCardSet, isNewCardSet: true)
             .environment(\.colorScheme, .light)
     }
 }

@@ -9,8 +9,13 @@
 import SwiftUI
 
 struct CardsPageView: View {
-    let cardSet: CardSet
+    @ObservedObject public var cardSetsData: CardSetsData
+    
     @State var currentPage = 0
+    @State var showingEditItemView = false
+    
+    @State var cardSet: CardSet
+    @State var editedCardSet: CardSet? = nil
     
     var body: some View {
         PageView(
@@ -26,6 +31,30 @@ struct CardsPageView: View {
             .navigationBarTitle(
                 "\(cardSet.title)",
                 displayMode: .inline
+            )
+            .navigationBarItems(
+                trailing: Button(
+                    action: {
+                        self.editedCardSet = self.cardSet
+                        self.showingEditItemView = true
+                    },
+                    label: {
+                        Text("Edit")
+                    }
+                )
+                .sheet(isPresented: $showingEditItemView) {
+                    EditCardSetView(
+                        cardSet: self.$editedCardSet,
+                        isNewCardSet: false
+                    )
+                    .onDisappear {
+                        if let editedCardSet = self.editedCardSet {
+                            self.cardSet = editedCardSet
+                            // TODO: Save the card set
+                        }
+                        self.editedCardSet = nil
+                    }
+                }
             )
             .edgesIgnoringSafeArea(.bottom)
     }
