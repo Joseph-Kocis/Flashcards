@@ -12,7 +12,8 @@ public struct CardSetsView: View {
     @ObservedObject public var cardSetsData: CardSetsData
     
     @State var showingAddItemView = false
-    @State var newCardSet: CardSet? = nil
+    @State var addItemCancelled = false
+    @State var newCardSet: CardSet = CardSet(title: "", cards: [])
     
     public init(cardSetsData: CardSetsData) {
         self.cardSetsData = cardSetsData
@@ -30,7 +31,7 @@ public struct CardSetsView: View {
         .navigationBarItems(
             trailing: Button(
                 action: {
-                    self.newCardSet = nil
+                    self.newCardSet = CardSet(title: "", cards: [])
                     self.showingAddItemView.toggle()
                 },
                 label: {
@@ -39,13 +40,17 @@ public struct CardSetsView: View {
                 }
             )
             .sheet(isPresented: $showingAddItemView) {
-                EditCardSetView(cardSet: self.$newCardSet, isNewCardSet: true)
-                    .onDisappear() {
-                        if let newCardSet = self.newCardSet {
-                            self.cardSetsData.addCardSet(newCardSet)
-                            self.newCardSet = nil
-                        }
+                EditCardSetView(
+                    cardSet: self.$newCardSet,
+                    isNewCardSet: true,
+                    isCancelled: self.$addItemCancelled
+                )
+                .onDisappear() {
+                    if !self.addItemCancelled && !self.newCardSet.title.isEmpty {
+                        self.cardSetsData.addCardSet(self.newCardSet)
                     }
+                    self.newCardSet = CardSet(title: "", cards: [])
+                }
             }
         )
     }

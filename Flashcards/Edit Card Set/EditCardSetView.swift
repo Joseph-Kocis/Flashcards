@@ -16,16 +16,16 @@ struct EditCardSetView: View {
     @State private var cardSetTitle = ""
     @State private var showingAlert = false
     
-    @Binding var cardSet: CardSet?
+    @Binding var cardSet: CardSet
+    @Binding var isCancelled: Bool
     
     var isNewCardSet: Bool
     
-    public init(cardSet: Binding<CardSet?>, isNewCardSet: Bool) {
+    public init(cardSet: Binding<CardSet>, isNewCardSet: Bool, isCancelled: Binding<Bool>) {
         self._cardSet = cardSet
         self.isNewCardSet = isNewCardSet
-        if let cardSet = cardSet.wrappedValue {
-            self.cardsInformation = CardsInformation(from: cardSet)
-        }
+        self._isCancelled = isCancelled
+        self.cardsInformation = CardsInformation(from: cardSet.wrappedValue)
     }
     
     public var body: some View {
@@ -53,6 +53,7 @@ struct EditCardSetView: View {
             .navigationBarItems(
                 leading: Button(
                     action: {
+                        self.isCancelled = true
                         self.presentationMode.wrappedValue.dismiss()
                     },
                     label: {
@@ -62,10 +63,9 @@ struct EditCardSetView: View {
                 trailing: Button(
                     action: {
                         if !self.cardSetTitle.isEmpty {
-                            self.cardSet = CardSet(
-                                title: self.cardSetTitle,
-                                cards: self.cardsInformation.getCards()
-                            )
+                            self.cardSet.title = self.cardSetTitle
+                            self.cardSet.cards = self.cardsInformation.getCards()
+                            self.isCancelled = false
                             self.presentationMode.wrappedValue.dismiss()
                         } else {
                             self.showingAlert = true
@@ -85,18 +85,17 @@ struct EditCardSetView: View {
             }
         }
         .onAppear {
-            if let title = self.cardSet?.title {
-                self.cardSetTitle = title
-            }
+            self.cardSetTitle = self.cardSet.title
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
 struct EditCardSetView_Previews: PreviewProvider {
-    @State static var testCardSet: CardSet? = CardSetsData.testCardSet()
+    @State static var testCardSet: CardSet = CardSetsData.testCardSet()
+    @State static var isCancelled = false
     static var previews: some View {
-        EditCardSetView(cardSet: $testCardSet, isNewCardSet: true)
+        EditCardSetView(cardSet: $testCardSet, isNewCardSet: true, isCancelled: $isCancelled)
             .environment(\.colorScheme, .light)
     }
 }

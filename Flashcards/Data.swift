@@ -9,13 +9,13 @@
 import SwiftUI
 
 struct CardSet {
-    public var id = UUID()
-    let title: String
-    let cards: [Card]
+    public let id = UUID()
+    var title: String
+    var cards: [Card]
 }
 
 struct Card: Identifiable {
-    public var id = UUID()
+    public let id = UUID()
     var word: String
     var definition: String
 }
@@ -27,6 +27,16 @@ public class CardSetsData: ObservableObject {
     
     func addCardSet(_ cardSet: CardSet) {
         cardSets.append(cardSet)
+    }
+    
+    func updateCardSet(_ updatedCardSet: CardSet) {
+        cardSets = cardSets.map { cardSet in
+            if cardSet.id == updatedCardSet.id {
+                return updatedCardSet
+            } else {
+                return cardSet
+            }
+        }
     }
     
     private func addTestCardSet() {

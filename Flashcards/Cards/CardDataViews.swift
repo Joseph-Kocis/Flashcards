@@ -24,6 +24,7 @@ struct CardFrontView: View {
                 .shadow(color: colorScheme == .light ? .gray : .black, radius: 5)
             Text(card.word)
                 .foregroundColor(Color(UIColor.label))
+                .padding(.horizontal, 10)
         }
         .padding(.horizontal, horizontalSizeClass == .compact ? 15 : 50)
         .padding(.vertical, 50)
@@ -50,6 +51,7 @@ struct CardBackView: View {
                 Text(card.definition)
                     .foregroundColor(Color(UIColor.secondaryLabel))
             }
+            .padding(.horizontal, 10)
         }
         .padding(.horizontal, horizontalSizeClass == .compact ? 15 : 50)
         .padding(.vertical, 50)

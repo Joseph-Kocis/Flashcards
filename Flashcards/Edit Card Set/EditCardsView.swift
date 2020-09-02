@@ -60,9 +60,10 @@ struct EditCardsView: View {
 }
 
 struct EditCardsView_Previews: PreviewProvider {
-    @State static var testCardSet: CardSet? = CardSetsData.testCardSet()
+    @State static var testCardSet: CardSet = CardSetsData.testCardSet()
+    @State static var isCancelled = false
     static var previews: some View {
-        EditCardSetView(cardSet: $testCardSet, isNewCardSet: true)
+        EditCardSetView(cardSet: $testCardSet, isNewCardSet: true, isCancelled: $isCancelled)
             .environment(\.colorScheme, .light)
     }
 }

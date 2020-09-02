@@ -13,9 +13,9 @@ struct CardsPageView: View {
     
     @State var currentPage = 0
     @State var showingEditItemView = false
+    @State var addItemCancelled = false
     
     @State var cardSet: CardSet
-    @State var editedCardSet: CardSet? = nil
     
     var body: some View {
         PageView(
@@ -35,7 +35,6 @@ struct CardsPageView: View {
             .navigationBarItems(
                 trailing: Button(
                     action: {
-                        self.editedCardSet = self.cardSet
                         self.showingEditItemView = true
                     },
                     label: {
@@ -44,15 +43,14 @@ struct CardsPageView: View {
                 )
                 .sheet(isPresented: $showingEditItemView) {
                     EditCardSetView(
-                        cardSet: self.$editedCardSet,
-                        isNewCardSet: false
+                        cardSet: self.$cardSet,
+                        isNewCardSet: false,
+                        isCancelled: self.$addItemCancelled
                     )
                     .onDisappear {
-                        if let editedCardSet = self.editedCardSet {
-                            self.cardSet = editedCardSet
-                            // TODO: Save the card set
+                        if !self.addItemCancelled {
+                            self.cardSetsData.updateCardSet(self.cardSet)
                         }
-                        self.editedCardSet = nil
                     }
                 }
             )
