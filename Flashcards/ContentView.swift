@@ -19,6 +19,7 @@ struct ContentView: View {
                 .foregroundColor(Color(UIColor.secondaryLabel))
                 .font(Font.headline)
         }
+        .accentColor(appAccentColor)
         .navigationViewStyle(DoubleColumnNavigationViewStyle())
     }
 }

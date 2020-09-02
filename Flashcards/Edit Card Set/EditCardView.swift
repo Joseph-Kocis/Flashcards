@@ -9,9 +9,10 @@
 import SwiftUI
 
 struct EditCardView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.colorScheme) var colorScheme
     
-    @ObservedObject var cards: CardsInformation
+    @ObservedObject var cardsInformation: CardsInformation
     let index: Int
     
     public var body: some View {
@@ -24,19 +25,41 @@ struct EditCardView: View {
                 .cornerRadius(10)
                 .shadow(color: self.colorScheme == .light ? .gray : .black, radius: 2)
             
-            HStack {
-                TextField("Enter word", text: self.$cards.words[index])
-                    .padding(.horizontal, 10)
-                    .multilineTextAlignment(.center)
-                TextField("Enter definition", text: self.$cards.definitions[index])
-                    .padding(.horizontal, 10)
-                    .multilineTextAlignment(.center)
+            if self.cardsInformation.words.indices.contains(index) && self.cardsInformation.definitions.indices.contains(index) {
+                HStack {
+                    TextField("Enter word", text: self.$cardsInformation.words[index])
+                        .padding(.horizontal, 10)
+                        .multilineTextAlignment(.center)
+                    TextField("Enter definition", text: self.$cardsInformation.definitions[index])
+                        .padding(.horizontal, 10)
+                        .multilineTextAlignment(.center)
+                }
             }
             
             HStack {
                 Divider()
-                    
             }
+            
+            HStack {
+                VStack {
+                    Button(
+                        action: {
+                            self.cardsInformation.words.remove(at: self.index)
+                            self.cardsInformation.definitions.remove(at: self.index)
+                        },
+                        label: {
+                            Image(systemName: "minus.circle.fill")
+                            .foregroundColor(.red)
+                            .background(Color.white.cornerRadius(50))
+                            .font(.custom("body", size: 25))
+                        }
+                    )
+                    Spacer()
+                }
+                Spacer()
+            }
+            .padding(.vertical, -7)
+            .padding(.horizontal, -7)
         }
         .padding(.vertical, 10)
     }

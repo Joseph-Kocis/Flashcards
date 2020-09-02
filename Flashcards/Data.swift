@@ -8,6 +8,8 @@
 
 import SwiftUI
 
+let appAccentColor = Color(UIColor(named: "Accent Color")!)
+
 struct CardSet {
     public let id = UUID()
     var title: String

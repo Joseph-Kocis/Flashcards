@@ -38,23 +38,24 @@ class CardsInformation: ObservableObject {
 struct EditCardsView: View {
     @Environment(\.colorScheme) var colorScheme
     
-    @ObservedObject var cards: CardsInformation
+    @ObservedObject var cardsInformation: CardsInformation
     
     public var body: some View {
         VStack {
-            ForEach(cards.words.indices, id: \.self) { index in
-                EditCardView(cards: self.cards, index: index)
+            ForEach(cardsInformation.words.indices, id: \.self) { index in
+                EditCardView(cardsInformation: self.cardsInformation, index: index)
             }
             Button(
                 action: {
-                    self.cards.words.append("")
-                    self.cards.definitions.append("")
+                    self.cardsInformation.words.append("")
+                    self.cardsInformation.definitions.append("")
                 },
                 label: {
                     Image(systemName: "plus.circle")
                     .font(.custom("body", size: 25))
                 }
             )
+            .accentColor(appAccentColor)
         }
     }
 }

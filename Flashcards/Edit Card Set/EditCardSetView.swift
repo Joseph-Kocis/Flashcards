@@ -42,7 +42,7 @@ struct EditCardSetView: View {
                             )
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         }
-                        EditCardsView(cards: cardsInformation)
+                        EditCardsView(cardsInformation: cardsInformation)
                         Spacer()
                     }
                     .padding()
@@ -84,6 +84,7 @@ struct EditCardSetView: View {
                 )
             }
         }
+        .accentColor(appAccentColor)
         .onAppear {
             self.cardSetTitle = self.cardSet.title
         }
