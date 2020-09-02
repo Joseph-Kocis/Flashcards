@@ -29,6 +29,10 @@ public class CardSetsData: ObservableObject {
         cardSets.append(cardSet)
     }
     
+    func deleteCardSet(at index: Int) {
+        cardSets.remove(at: index)
+    }
+    
     func updateCardSet(_ updatedCardSet: CardSet) {
         cardSets = cardSets.map { cardSet in
             if cardSet.id == updatedCardSet.id {

@@ -26,9 +26,15 @@ public struct CardSetsView: View {
                     Text(cardSet.title)
                 }
             }
+            .onDelete { indexSet in
+                for index in indexSet {
+                    self.cardSetsData.deleteCardSet(at: index)
+                }
+            }
         }
         .navigationBarTitle("Card Sets", displayMode: .inline)
         .navigationBarItems(
+            leading: EditButton(),
             trailing: Button(
                 action: {
                     self.newCardSet = CardSet(title: "", cards: [])
