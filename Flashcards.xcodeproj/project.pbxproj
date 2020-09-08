@@ -82,11 +82,10 @@
 				A6B6C3D624FC3A3900F2E6B1 /* Flashcards.entitlements */,
 				A647183224F981160057C19F /* AppDelegate.swift */,
 				A647183424F981160057C19F /* SceneDelegate.swift */,
-				A647183924F981160057C19F /* ContentView.swift */,
 				A6B6C3D924FC415000F2E6B1 /* Card Sets */,
 				A6B6C3CF24FC12CA00F2E6B1 /* Cards */,
 				A6B4F741250007460090C350 /* Edit Card Set */,
-				A6B6C3CD24FC102F00F2E6B1 /* Data.swift */,
+				A671BF382501912700059B73 /* Data */,
 				A647184924F991930057C19F /* Pages */,
 				A647183B24F981270057C19F /* Assets.xcassets */,
 				A647184024F981270057C19F /* LaunchScreen.storyboard */,
@@ -114,6 +113,14 @@
 			path = Pages;
 			sourceTree = "<group>";
 		};
+		A671BF382501912700059B73 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				A6B6C3CD24FC102F00F2E6B1 /* Data.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		A6B4F741250007460090C350 /* Edit Card Set */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +144,7 @@
 		A6B6C3D924FC415000F2E6B1 /* Card Sets */ = {
 			isa = PBXGroup;
 			children = (
+				A647183924F981160057C19F /* ContentView.swift */,
 				A6B6C3D024FC12E300F2E6B1 /* CardSetsView.swift */,
 			);
 			path = "Card Sets";

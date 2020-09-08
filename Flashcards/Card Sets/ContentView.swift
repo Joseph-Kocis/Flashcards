@@ -11,6 +11,10 @@ import SwiftUI
 struct ContentView: View {
     @ObservedObject var cardSetsData = CardSetsData()
     
+    init() {
+        cardSetsData.fetchData()
+    }
+    
     var body: some View {
         NavigationView {
             CardSetsView(cardSetsData: cardSetsData)

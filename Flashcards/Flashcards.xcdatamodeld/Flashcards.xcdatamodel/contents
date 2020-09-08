@@ -1,4 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="true" userDefinedModelVersionIdentifier="">
-    <elements/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+    <entity name="CardEntity" representedClassName="CardEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="definition" optional="YES" attributeType="String" defaultValueString=""/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="word" optional="YES" attributeType="String" defaultValueString=""/>
+        <relationship name="cardSet" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CardSetEntity" inverseName="cards" inverseEntity="CardSetEntity"/>
+    </entity>
+    <entity name="CardSetEntity" representedClassName="CardSetEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String" defaultValueString=""/>
+        <relationship name="cards" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardEntity" inverseName="cardSet" inverseEntity="CardEntity"/>
+        <relationship name="cardSets" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CardSetsEntity" inverseName="cardSets" inverseEntity="CardSetsEntity"/>
+    </entity>
+    <entity name="CardSetsEntity" representedClassName="CardSetsEntity" syncable="YES" codeGenerationType="class">
+        <relationship name="cardSets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardSetEntity" inverseName="cardSets" inverseEntity="CardSetEntity"/>
+    </entity>
+    <elements>
+        <element name="CardSetsEntity" positionX="-81.6640625" positionY="-99.5390625" width="128" height="28"/>
+        <element name="CardEntity" positionX="-18" positionY="9" width="128" height="103"/>
+        <element name="CardSetEntity" positionX="-204.44921875" positionY="7.78515625" width="128" height="103"/>
+    </elements>
 </model>
