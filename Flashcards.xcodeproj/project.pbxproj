@@ -24,6 +24,7 @@
 		A6B6C3D524FC158F00F2E6B1 /* CardsPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3D424FC158F00F2E6B1 /* CardsPageView.swift */; };
 		A6B6C3D824FC3C9000F2E6B1 /* EditCardSetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3D724FC3C9000F2E6B1 /* EditCardSetView.swift */; };
 		A6B6C3DB24FC473000F2E6B1 /* EditCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B6C3DA24FC473000F2E6B1 /* EditCardsView.swift */; };
+		A6BDD976250ADC10007F4206 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6BDD975250ADC10007F4206 /* CloudKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		A6B6C3D624FC3A3900F2E6B1 /* Flashcards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Flashcards.entitlements; sourceTree = "<group>"; };
 		A6B6C3D724FC3C9000F2E6B1 /* EditCardSetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardSetView.swift; sourceTree = "<group>"; };
 		A6B6C3DA24FC473000F2E6B1 /* EditCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardsView.swift; sourceTree = "<group>"; };
+		A6BDD975250ADC10007F4206 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6BDD976250ADC10007F4206 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +68,7 @@
 			children = (
 				A647183124F981160057C19F /* Flashcards */,
 				A647183024F981160057C19F /* Products */,
+				A6BDD974250ADC10007F4206 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +154,14 @@
 			path = "Card Sets";
 			sourceTree = "<group>";
 		};
+		A6BDD974250ADC10007F4206 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6BDD975250ADC10007F4206 /* CloudKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,7 +189,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = JodyKocis;
 				TargetAttributes = {
 					A647182E24F981150057C19F = {
@@ -278,6 +290,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -338,6 +351,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

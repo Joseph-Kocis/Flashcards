@@ -8,6 +8,7 @@
 
 import SwiftUI
 import CoreData
+import Combine
 
 let appAccentColor = Color(UIColor(named: "Accent Color")!)
 
@@ -24,9 +25,38 @@ struct Card: Identifiable {
 }
 
 public class CardSetsData: ObservableObject {
+    private var didSave = NotificationCenter.default.publisher(for: .NSManagedObjectContextDidSave)
+    private var willSave = NotificationCenter.default.publisher(for: .NSManagedObjectContextWillSave)
+    
     @Published var cardSets = [CardSet]() {
         didSet {
             save()
+        }
+    }
+    
+    // Update to use will save AND did save
+    
+    var onDidSave: AnyCancellable?
+    var onWillSave: AnyCancellable?
+    var startedSave = false
+    var shouldFetch = false
+    
+    init() {
+        onWillSave = willSave.sink { notification in
+            if !self.startedSave {
+                print("received changes - saving")
+                self.shouldFetch = true
+            } else {
+                print("received changes - not saving")
+            }
+        }
+        onDidSave = didSave.sink { notification in
+            if self.shouldFetch {
+                self.shouldFetch = false
+                DispatchQueue.main.async {
+                    self.fetchData()
+                }
+            }
         }
     }
     
@@ -83,40 +113,26 @@ public class CardSetsData: ObservableObject {
             })
             return cardSetEntity
         })
-        
     }
     
     func fetchData() {
-        guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext,
-            let entityName = CardSetsEntity.entity().name else {
-            fatalError("Unable to read managed object context.")
-        }
-        do {
-            let results = try context.fetch(NSFetchRequest(entityName: entityName)) as [CardSetsEntity]?
-            guard let firstResult = results?.first else { return }
+        if let results = AppDelegate.fetchCardSetsEntities() {
+            guard let firstResult = results.first else { return }
             cardSets = createDataObject(fromEntity: firstResult)
-        } catch {
-            fatalError(error.localizedDescription)
         }
     }
     
     private func save() {
-        guard let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
-            fatalError("Unable to read managed object context.")
-        }
-        
-        createManagedObject(withContext: context)
-        do {
-            try context.save()
-            let possibleResults = try context.fetch(NSFetchRequest(entityName: CardSetsEntity.entity().name!)) as [CardSetsEntity]?
-            guard let results = possibleResults else { return }
+        startedSave = true
+        createManagedObject(withContext: AppDelegate.context)
+        AppDelegate.save()
+        if let results = AppDelegate.fetchCardSetsEntities() {
             for index in results.startIndex ..< results.endIndex - 1 {
-                context.delete(results[index])
-                try context.save()
+                AppDelegate.context.delete(results[index])
+                AppDelegate.save()
             }
-        } catch {
-            print(error)
         }
+        startedSave = false
     }
 }
 

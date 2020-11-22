@@ -12,8 +12,6 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
@@ -34,6 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
+    
+    static var context: NSManagedObjectContext {
+        (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
+        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    }
 
     lazy var persistentContainer: NSPersistentCloudKitContainer = {
         /*
@@ -61,10 +64,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
+    
+    static func fetchCardSetsEntities() -> [CardSetsEntity]? {
+        guard let entityName = CardSetsEntity.entity().name else {
+            fatalError("CardSetsEntity has no name")
+        }
+        do {
+            return try context.fetch(NSFetchRequest(entityName: entityName)) as [CardSetsEntity]?
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
 
     // MARK: - Core Data Saving support
+    
+    static func save() {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+               // Replace this implementation with code to handle the error appropriately.
+               // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+               let nserror = error as NSError
+               fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+           }
+        }
+    }
 
-    func saveContext () {
+    func saveContext() {
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {

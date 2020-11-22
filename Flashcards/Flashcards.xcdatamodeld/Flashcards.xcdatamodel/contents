@@ -16,8 +16,8 @@
         <relationship name="cardSets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CardSetEntity" inverseName="cardSets" inverseEntity="CardSetEntity"/>
     </entity>
     <elements>
-        <element name="CardSetsEntity" positionX="-81.6640625" positionY="-99.5390625" width="128" height="28"/>
         <element name="CardEntity" positionX="-18" positionY="9" width="128" height="103"/>
         <element name="CardSetEntity" positionX="-204.44921875" positionY="7.78515625" width="128" height="103"/>
+        <element name="CardSetsEntity" positionX="-81.6640625" positionY="-99.5390625" width="128" height="28"/>
     </elements>
 </model>
